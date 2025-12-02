@@ -4,8 +4,10 @@ import android.app.Activity
 import android.content.Context
 import android.widget.Toast
 import androidx.activity.compose.BackHandler
+import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -19,10 +21,14 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.layout.wrapContentSize
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.Checkbox
+import androidx.compose.material3.CheckboxDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.OutlinedTextFieldDefaults
@@ -34,7 +40,11 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.Path
+import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
@@ -60,6 +70,11 @@ import com.example.panicbuttonrtdb.data.Perumahan
 import com.example.panicbuttonrtdb.data.UserPreferences
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowDropDown
+import androidx.compose.material.icons.filled.Email
+import androidx.compose.material.icons.filled.Lock
+import com.example.panicbuttonrtdb.ui.theme.CoralPink
+import com.example.panicbuttonrtdb.ui.theme.SoftPink
+import com.example.panicbuttonrtdb.ui.theme.TextDark
 
 @Composable
 fun LoginScreen(
@@ -75,55 +90,128 @@ fun LoginScreen(
     var houseNumber by remember { mutableStateOf("") }
     val (password, setPassword) = remember { mutableStateOf("") }
     var isLoading by remember { mutableStateOf(false) }  // Indikator loading
+    var rememberMe by remember { mutableStateOf(false) }
 
-    Column(
-        modifier
-            .background(color = colorResource(id = R.color.primary))
+    Box(
+        modifier = modifier
             .fillMaxSize()
-    ){
-        Box(
-            modifier
-                .fillMaxWidth()
-                .wrapContentHeight()
-                .padding(top = 60.dp),
-            contentAlignment = Alignment.TopCenter
-        ) {
-            Image(
-                painter = painterResource(id = R.drawable.ic_logo),
-                contentDescription = "ic_logo",
-                modifier = Modifier.size(160.dp)
+            .background(
+                brush = Brush.verticalGradient(
+                    colors = listOf(CoralPink, SoftPink)
+                )
             )
+    ) {
+        // Batik Pattern Background (More Visible)
+        Image(
+            painter = painterResource(id = R.drawable.batik_pattern),
+            contentDescription = "Batik Pattern",
+            modifier = Modifier.fillMaxSize(),
+            contentScale = androidx.compose.ui.layout.ContentScale.Crop,
+            alpha = 0.7f
+        )
+        
+        // Decorative Pattern
+        Canvas(modifier = Modifier.fillMaxSize()) {
+            val width = size.width
+            val height = size.height
+            
+            // Draw wavy lines
+            val wavePath = Path().apply {
+                moveTo(0f, height * 0.15f)
+                cubicTo(
+                    width * 0.25f, height * 0.1f,
+                    width * 0.75f, height * 0.2f,
+                    width, height * 0.15f
+                )
+            }
+            
+            drawPath(
+                path = wavePath,
+                color = Color.White.copy(alpha = 0.1f),
+                style = Stroke(width = 2f)
+            )
+
+            // Draw circles
+            val circlePositions = listOf(
+                Offset(width * 0.15f, height * 0.1f) to 30f,
+                Offset(width * 0.85f, height * 0.08f) to 40f,
+                Offset(width * 0.75f, height * 0.25f) to 35f
+            )
+
+            circlePositions.forEach { (offset, radius) ->
+                drawCircle(
+                    color = Color.White.copy(alpha = 0.1f),
+                    radius = radius,
+                    center = offset,
+                    style = Stroke(width = 2f)
+                )
+            }
+
+            // Draw X patterns
+            val xSize = 25f
+            val xPositions = listOf(
+                Offset(width * 0.3f, height * 0.2f),
+                Offset(width * 0.9f, height * 0.18f)
+            )
+
+            xPositions.forEach { offset ->
+                drawLine(
+                    color = Color.White.copy(alpha = 0.15f),
+                    start = Offset(offset.x - xSize / 2, offset.y - xSize / 2),
+                    end = Offset(offset.x + xSize / 2, offset.y + xSize / 2),
+                    strokeWidth = 3f
+                )
+                drawLine(
+                    color = Color.White.copy(alpha = 0.15f),
+                    start = Offset(offset.x + xSize / 2, offset.y - xSize / 2),
+                    end = Offset(offset.x - xSize / 2, offset.y + xSize / 2),
+                    strokeWidth = 3f
+                )
+            }
         }
-        Box(
-            modifier
-                .background(color = colorResource(id = R.color.primary))
-                .fillMaxSize(),
-            contentAlignment = Alignment.BottomCenter
+
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
         ) {
+            // Top Section with Logo
             Box(
-                modifier
-                    .height(600.dp)
-                    .background(
-                        color = Color.White, RoundedCornerShape(topStart = 16.dp, topEnd = 16.dp)
-                    )
+                modifier = Modifier
                     .fillMaxWidth()
-                    .padding(start = 24.dp, end = 24.dp)
-            ){
+                    .weight(0.35f),
+                contentAlignment = Alignment.Center
+            ) {
+                Image(
+                    painter = painterResource(id = R.drawable.ic_logo),
+                    contentDescription = "Logo",
+                    modifier = Modifier.size(140.dp)
+                )
+            }
+
+            // White Content Card
+            Box(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .weight(0.65f)
+                    .background(
+                        color = Color.White,
+                        shape = RoundedCornerShape(topStart = 32.dp, topEnd = 32.dp)
+                    )
+            ) {
                 Column(
-                    modifier
-                        .padding(top = 40.dp)
-                        .fillMaxWidth(),
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .padding(horizontal = 28.dp, vertical = 32.dp),
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
                     Text(
                         text = "Login",
-                        fontSize = 36.sp,
+                        fontSize = 38.sp,
                         fontWeight = FontWeight.Bold,
-                        color = colorResource(id = R.color.font),
+                        color = Color(0xFFBA4661)
+                    )
 
-                        )
-
-                    Spacer(modifier = Modifier.height(44.dp))
+                    Spacer(modifier = Modifier.height(16.dp))
 
                     // --- DROPDOWN PERUMAHAN ---
                     val repo = remember { FirebaseRepository() }
@@ -145,9 +233,8 @@ fun LoginScreen(
                         )
                     }
 
-// ----------------- OUTLINED TEXT FIELD DROPDOWN -----------------
+                    // Dropdown Perumahan
                     Box(modifier = Modifier.fillMaxWidth()) {
-
                         OutlinedTextField(
                             value = selectedName,
                             onValueChange = { },
@@ -155,25 +242,31 @@ fun LoginScreen(
                                 .fillMaxWidth()
                                 .clickable { expanded = true },
                             enabled = false,
+                            label = { Text("Perumahan") },
+                            placeholder = { Text(text = "Pilih Perumahan", color = Color(0xFFBA4661)) },
                             singleLine = true,
                             leadingIcon = {
                                 Icon(
                                     painter = painterResource(id = R.drawable.ic_home),
-                                    contentDescription = "ic home"
+                                    contentDescription = "home",
+                                    tint = Color(0xFFBA4661)
                                 )
                             },
                             trailingIcon = {
                                 Icon(
                                     imageVector = Icons.Default.ArrowDropDown,
-                                    contentDescription = "dropdown"
+                                    contentDescription = "dropdown",
+                                    tint = Color(0xFFBA4661)
                                 )
                             },
-                            shape = RoundedCornerShape(8.dp),
+                            shape = RoundedCornerShape(12.dp),
                             colors = OutlinedTextFieldDefaults.colors(
-                                disabledTextColor = Color.Black,
-                                disabledLeadingIconColor = colorResource(id = R.color.defauld),
-                                disabledTrailingIconColor = colorResource(id = R.color.defauld),
-                                disabledBorderColor = colorResource(id = R.color.defauld),
+                                disabledTextColor = Color(0xFFBA4661),
+                                disabledContainerColor = Color.White,
+                                disabledLabelColor = Color(0xFFBA4661),
+                                disabledLeadingIconColor = Color(0xFFBA4661),
+                                disabledTrailingIconColor = Color(0xFFBA4661),
+                                disabledBorderColor = Color(0xFFBA4661)
                             )
                         )
 
@@ -182,7 +275,8 @@ fun LoginScreen(
                             onDismissRequest = { expanded = false },
                             modifier = Modifier
                                 .fillMaxWidth()
-                                .background(Color.White)
+                                .background(Color.White),
+                            offset = androidx.compose.ui.unit.DpOffset(0.dp, 8.dp)
                         ) {
                             perumahanList.forEach { item ->
                                 DropdownMenuItem(
@@ -197,13 +291,14 @@ fun LoginScreen(
                         }
                     }
 
-                    Spacer(modifier = Modifier.height(12.dp))
+                    Spacer(modifier = Modifier.height(18.dp))
 
                     OutlinedTextField(
                         value = houseNumber,
                         onValueChange = {houseNumber = it},
                         label = { Text(text = "Nomor Rumah") },
-                        shape = RoundedCornerShape(8.dp),
+                        placeholder = { Text(text = "Nomor Rumah", color = Color(0xFF9E9E9E)) },
+                        shape = RoundedCornerShape(12.dp),
                         modifier = Modifier.fillMaxWidth(),
                         singleLine = true,
                         keyboardOptions = KeyboardOptions(
@@ -217,18 +312,23 @@ fun LoginScreen(
                             )
                         },
                         colors = OutlinedTextFieldDefaults.colors(
-                            focusedBorderColor = colorResource(id = R.color.font),
-                            focusedLabelColor = colorResource(id = R.color.font),
-                            focusedLeadingIconColor = colorResource(id = R.color.font),
-                            unfocusedLeadingIconColor = colorResource(id = R.color.defauld),
-                            cursorColor = colorResource(id = R.color.font)
+                            focusedBorderColor = Color(0xFFBA4661),
+                            focusedLabelColor = Color(0xFFBA4661),
+                            focusedLeadingIconColor = Color(0xFFBA4661),
+                            unfocusedBorderColor = Color(0xFFBA4661),
+                            unfocusedLeadingIconColor = Color(0xFFBA4661),
+                            unfocusedLabelColor = Color(0xFFBA4661),
+                            cursorColor = Color(0xFFBA4661)
                         )
                     )
-                    Spacer(modifier = Modifier.height(12.dp))
+                    
+                    Spacer(modifier = Modifier.height(18.dp))
 
                     OutlinedTextFieldPassword(password, setPassword)
 
-                    Spacer(modifier = Modifier.height(12.dp))
+                    Spacer(modifier = Modifier.height(18.dp))
+                    
+                    Spacer(modifier = Modifier.height(8.dp))
 
                     Button(
                         onClick = {
@@ -265,33 +365,45 @@ fun LoginScreen(
                         },
                         modifier = Modifier
                             .fillMaxWidth()
-                            .height(50.dp)
-                        ,
-                        enabled = !isLoading, // Matikan tombol saat loading
-                        shape = RoundedCornerShape(26.dp),
+                            .height(56.dp),
+                        enabled = !isLoading,
+                        shape = RoundedCornerShape(28.dp),
                         colors = ButtonDefaults.buttonColors(
-                            containerColor = colorResource(id = R.color.font),
-                            contentColor = Color.White
+                            containerColor = Color(0xFFBA4661),
+                            contentColor = Color.White,
+                            disabledContainerColor = Color(0xFFBA4661).copy(alpha = 0.6f)
                         )
                     ) {
-                        Text(text = "Login")
+                        Text(
+                            text = "Login",
+                            fontSize = 17.sp,
+                            fontWeight = FontWeight.Bold
+                        )
                     }
 
-                    Spacer(modifier = Modifier.height(36.dp))
+                    Spacer(modifier = Modifier.height(24.dp))
+                    
                     Row(
-                        horizontalArrangement = Arrangement.spacedBy(4.dp)
+                        modifier = Modifier.fillMaxWidth(),
+                        horizontalArrangement = Arrangement.Center,
+                        verticalAlignment = Alignment.CenterVertically
                     ) {
                         Text(
-                            text = "Belum memiliki akun?"
+                            text = "Belum memiliki akun? ",
+                            fontSize = 15.sp,
+                            color = Color(0xFF757575)
                         )
                         Text(
                             modifier = Modifier
                                 .clickable { navController.navigate("signup") },
                             text = "Daftar",
+                            fontSize = 15.sp,
                             fontWeight = FontWeight.Bold,
-                            color = colorResource(id = R.color.font)
+                            color = Color(0xFFBA4661)
                         )
                     }
+                    
+                    Spacer(modifier = Modifier.height(16.dp))
                 }
             }
         }

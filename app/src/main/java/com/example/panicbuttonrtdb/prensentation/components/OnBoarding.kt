@@ -174,7 +174,7 @@ fun OnBoardingPager(
                 }else {
                     TextButton(
                         onClick = {
-                            navController.navigate("login") {
+                            navController.navigate("welcome") {
                                 popUpTo("onboarding") { inclusive = true }
                             }
                         }) {
