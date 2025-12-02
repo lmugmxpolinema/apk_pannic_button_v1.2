@@ -22,6 +22,7 @@ import com.example.panicbuttonrtdb.prensentation.screens.DashboardUserScreen
 import com.example.panicbuttonrtdb.prensentation.screens.HelpScreen
 import com.example.panicbuttonrtdb.prensentation.screens.LoginScreen
 import com.example.panicbuttonrtdb.prensentation.screens.SignUpScreen
+import com.example.panicbuttonrtdb.prensentation.screens.WelcomeScreen
 import com.example.panicbuttonrtdb.viewmodel.ViewModel
 import com.example.panicbuttonrtdb.viewmodel.ViewModelFactory
 
@@ -51,6 +52,11 @@ fun MainApp() {
             LaunchedEffect(Unit) {
                 sharedPreferences.edit().putBoolean("OnBoardingShown", true).apply()
             }
+        }
+        
+        // Halaman Welcome (New Modern Design)
+        composable("welcome") {
+            WelcomeScreen(navController = navController)
         }
         
         // Halaman Sign Up

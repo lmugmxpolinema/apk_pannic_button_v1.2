@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="400dp"
+    android:height="400dp"
+    android:viewportWidth="400"
+    android:viewportHeight="400">
+    
+    <!-- Enhanced Floral Decorative Pattern with Better Visibility -->
+    
+    <!-- Bold wave lines -->
+    <path
+        android:pathData="M0,50 Q50,30 100,50 T200,50 T300,50 T400,50"
+        android:strokeColor="#FFFFFF"
+        android:strokeWidth="3"
+        android:fillColor="#00000000"
+        android:strokeAlpha="0.25"/>
+    
+    <path
+        android:pathData="M0,150 Q50,130 100,150 T200,150 T300,150 T400,150"
+        android:strokeColor="#FFFFFF"
+        android:strokeWidth="3"
+        android:fillColor="#00000000"
+        android:strokeAlpha="0.25"/>
+    
+    <path
+        android:pathData="M0,250 Q50,230 100,250 T200,250 T300,250 T400,250"
+        android:strokeColor="#FFFFFF"
+        android:strokeWidth="3"
+        android:fillColor="#00000000"
+        android:strokeAlpha="0.25"/>
+    
+    <path
+        android:pathData="M0,350 Q50,330 100,350 T200,350 T300,350 T400,350"
+        android:strokeColor="#FFFFFF"
+        android:strokeWidth="3"
+        android:fillColor="#00000000"
+        android:strokeAlpha="0.25"/>
+    
+    <!-- Decorative Flowers - Position 1 (More Visible) -->
+    <group
+        android:translateX="80"
+        android:translateY="100">
+        <!-- Flower petals -->
+        <path
+            android:pathData="M0,-15 Q5,-20 10,-15 Q15,-10 10,-5 Q5,0 0,-5 Z"
+            android:fillColor="#FFFFFF"
+            android:fillAlpha="0.3"/>
+        <path
+            android:pathData="M15,0 Q20,5 15,10 Q10,15 5,10 Q0,5 5,0 Z"
+            android:fillColor="#FFFFFF"
+            android:fillAlpha="0.3"/>
+        <path
+            android:pathData="M0,5 Q-5,10 -10,5 Q-15,0 -10,-5 Q-5,-10 0,-5 Z"
+            android:fillColor="#FFFFFF"
+            android:fillAlpha="0.3"/>
+        <path
+            android:pathData="M-15,0 Q-20,-5 -15,-10 Q-10,-15 -5,-10 Q0,-5 -5,0 Z"
+            android:fillColor="#FFFFFF"
+            android:fillAlpha="0.3"/>
+        <!-- Center -->
+        <path
+            android:pathData="M0,0 m-4,0 a4,4 0 1,0 8,0 a4,4 0 1,0 -8,0"
+            android:fillColor="#FFFFFF"
+            android:fillAlpha="0.35"/>
+    </group>
+    
+    <!-- Decorative Flowers - Position 2 (More Visible) -->
+    <group
+        android:translateX="320"
+        android:translateY="200">
+        <path
+            android:pathData="M0,-12 Q4,-16 8,-12 Q12,-8 8,-4 Q4,0 0,-4 Z"
+            android:fillColor="#FFFFFF"
+            android:fillAlpha="0.25"/>
+        <path
+            android:pathData="M12,0 Q16,4 12,8 Q8,12 4,8 Q0,4 4,0 Z"
+            android:fillColor="#FFFFFF"
+            android:fillAlpha="0.25"/>
+        <path
+            android:pathData="M0,4 Q-4,8 -8,4 Q-12,0 -8,-4 Q-4,-8 0,-4 Z"
+            android:fillColor="#FFFFFF"
+            android:fillAlpha="0.25"/>
+        <path
+            android:pathData="M-12,0 Q-16,-4 -12,-8 Q-8,-12 -4,-8 Q0,-4 -4,0 Z"
+            android:fillColor="#FFFFFF"
+            android:fillAlpha="0.25"/>
+        <path
+            android:pathData="M0,0 m-3,0 a3,3 0 1,0 6,0 a3,3 0 1,0 -6,0"
+            android:fillColor="#FFFFFF"
+            android:fillAlpha="0.35"/>
+    </group>
+    
+    <!-- Decorative Flowers - Position 3 (More Visible) -->
+    <group
+        android:translateX="150"
+        android:translateY="320">
+        <path
+            android:pathData="M0,-10 Q3,-13 6,-10 Q9,-7 6,-4 Q3,-1 0,-4 Z"
+            android:fillColor="#FFFFFF"
+            android:fillAlpha="0.25"/>
+        <path
+            android:pathData="M9,0 Q12,3 9,6 Q6,9 3,6 Q0,3 3,0 Z"
+            android:fillColor="#FFFFFF"
+            android:fillAlpha="0.25"/>
+        <path
+            android:pathData="M0,3 Q-3,6 -6,3 Q-9,0 -6,-3 Q-3,-6 0,-3 Z"
+            android:fillColor="#FFFFFF"
+            android:fillAlpha="0.25"/>
+        <path
+            android:pathData="M-9,0 Q-12,-3 -9,-6 Q-6,-9 -3,-6 Q0,-3 -3,0 Z"
+            android:fillColor="#FFFFFF"
+            android:fillAlpha="0.25"/>
+        <path
+            android:pathData="M0,0 m-2.5,0 a2.5,2.5 0 1,0 5,0 a2.5,2.5 0 1,0 -5,0"
+            android:fillColor="#FFFFFF"
+            android:fillAlpha="0.35"/>
+    </group>
+    
+    <!-- Additional Large Flowers for Better Visibility -->
+    <group
+        android:translateX="280"
+        android:translateY="80">
+        <path
+            android:pathData="M0,-18 Q6,-24 12,-18 Q18,-12 12,-6 Q6,0 0,-6 Z"
+            android:fillColor="#FFFFFF"
+            android:fillAlpha="0.28"/>
+        <path
+            android:pathData="M18,0 Q24,6 18,12 Q12,18 6,12 Q0,6 6,0 Z"
+            android:fillColor="#FFFFFF"
+            android:fillAlpha="0.28"/>
+        <path
+            android:pathData="M0,6 Q-6,12 -12,6 Q-18,0 -12,-6 Q-6,-12 0,-6 Z"
+            android:fillColor="#FFFFFF"
+            android:fillAlpha="0.28"/>
+        <path
+            android:pathData="M-18,0 Q-24,-6 -18,-12 Q-12,-18 -6,-12 Q0,-6 -6,0 Z"
+            android:fillColor="#FFFFFF"
+            android:fillAlpha="0.28"/>
+        <path
+            android:pathData="M0,0 m-5,0 a5,5 0 1,0 10,0 a5,5 0 1,0 -10,0"
+            android:fillColor="#FFFFFF"
+            android:fillAlpha="0.35"/>
+    </group>
+    
+    <group
+        android:translateX="180"
+        android:translateY="180">
+        <path
+            android:pathData="M0,-18 Q6,-24 12,-18 Q18,-12 12,-6 Q6,0 0,-6 Z"
+            android:fillColor="#FFFFFF"
+            android:fillAlpha="0.28"/>
+        <path
+            android:pathData="M18,0 Q24,6 18,12 Q12,18 6,12 Q0,6 6,0 Z"
+            android:fillColor="#FFFFFF"
+            android:fillAlpha="0.28"/>
+        <path
+            android:pathData="M0,6 Q-6,12 -12,6 Q-18,0 -12,-6 Q-6,-12 0,-6 Z"
+            android:fillColor="#FFFFFF"
+            android:fillAlpha="0.28"/>
+        <path
+            android:pathData="M-18,0 Q-24,-6 -18,-12 Q-12,-18 -6,-12 Q0,-6 -6,0 Z"
+            android:fillColor="#FFFFFF"
+            android:fillAlpha="0.28"/>
+        <path
+            android:pathData="M0,0 m-5,0 a5,5 0 1,0 10,0 a5,5 0 1,0 -10,0"
+            android:fillColor="#FFFFFF"
+            android:fillAlpha="0.35"/>
+    </group>
+    
+    <!-- Small decorative dots (More Visible) -->
+    <path
+        android:pathData="M60,80 m-4,0 a4,4 0 1,0 8,0 a4,4 0 1,0 -8,0"
+        android:fillColor="#FFFFFF"
+        android:fillAlpha="0.22"/>
+    <path
+        android:pathData="M280,120 m-4,0 a4,4 0 1,0 8,0 a4,4 0 1,0 -8,0"
+        android:fillColor="#FFFFFF"
+        android:fillAlpha="0.22"/>
+    <path
+        android:pathData="M200,280 m-4,0 a4,4 0 1,0 8,0 a4,4 0 1,0 -8,0"
+        android:fillColor="#FFFFFF"
+        android:fillAlpha="0.22"/>
+    <path
+        android:pathData="M340,180 m-4,0 a4,4 0 1,0 8,0 a4,4 0 1,0 -8,0"
+        android:fillColor="#FFFFFF"
+        android:fillAlpha="0.22"/>
+    <path
+        android:pathData="M120,240 m-4,0 a4,4 0 1,0 8,0 a4,4 0 1,0 -8,0"
+        android:fillColor="#FFFFFF"
+        android:fillAlpha="0.22"/>
+    <path
+        android:pathData="M50,200 m-4,0 a4,4 0 1,0 8,0 a4,4 0 1,0 -8,0"
+        android:fillColor="#FFFFFF"
+        android:fillAlpha="0.22"/>
+    <path
+        android:pathData="M360,280 m-4,0 a4,4 0 1,0 8,0 a4,4 0 1,0 -8,0"
+        android:fillColor="#FFFFFF"
+        android:fillAlpha="0.22"/>
+    <path
+        android:pathData="M220,360 m-4,0 a4,4 0 1,0 8,0 a4,4 0 1,0 -8,0"
+        android:fillColor="#FFFFFF"
+        android:fillAlpha="0.22"/>
+    
+    <!-- Curved connecting lines (More Visible) -->
+    <path
+        android:pathData="M40,140 Q100,120 160,140"
+        android:strokeColor="#FFFFFF"
+        android:strokeWidth="2.5"
+        android:fillColor="#00000000"
+        android:strokeAlpha="0.2"/>
+    <path
+        android:pathData="M240,180 Q280,160 320,180"
+        android:strokeColor="#FFFFFF"
+        android:strokeWidth="2.5"
+        android:fillColor="#00000000"
+        android:strokeAlpha="0.2"/>
+    <path
+        android:pathData="M100,300 Q140,280 180,300"
+        android:strokeColor="#FFFFFF"
+        android:strokeWidth="2.5"
+        android:fillColor="#00000000"
+        android:strokeAlpha="0.2"/>
+    <path
+        android:pathData="M260,300 Q300,320 340,300"
+        android:strokeColor="#FFFFFF"
+        android:strokeWidth="2.5"
+        android:fillColor="#00000000"
+        android:strokeAlpha="0.2"/>
+    <path
+        android:pathData="M20,220 Q60,240 100,220"
+        android:strokeColor="#FFFFFF"
+        android:strokeWidth="2.5"
+        android:fillColor="#00000000"
+        android:strokeAlpha="0.2"/>
+    
+</vector>
